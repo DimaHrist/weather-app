@@ -1,0 +1,22 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    background: #4a8cec;
+    width: 820px;
+    height: 615px;
+
+    .header{
+        height: 130px;
+    }
+
+    .body{
+        height: 355px;
+    }
+
+    .footer{
+        height: 130px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
