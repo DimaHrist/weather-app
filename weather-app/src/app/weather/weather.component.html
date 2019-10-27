@@ -1,18 +1,63 @@
 <div class="wrapper">
-    <div class="header"></div>
-    <div class="body"></div>
-    <div class="footer">
-        <div>
-            <span>Ветер</span>
-        </div>
-        <div>
-            <span>Давление</span>
-        </div>
-        <div>
-            <span>Влажность</span>
-        </div>
-        <div>
-            <span>Вероятность дождя</span>
-        </div>
-    </div>
+	<div class="content">
+
+		<div class="header">
+			<div class="city">
+				<div class="city__title">
+					<span>Омск</span>
+				</div>
+				<div class="city__footer">
+					<div class="city__change">
+						<span>Сменить город</span>
+					</div>
+					<div class="city__location">
+						<img src="../../assets/img/arrow.svg" class="city__arrow">
+						<span>Мое местоположение</span>
+					</div>
+				</div>
+			</div>
+			<div class="header__radio">
+				<div class="degree">°</div>
+				<div class="radio-group">
+					<input type="radio" name="celsius" value="C" id="celsius" checked="checked" />
+					<label for="celsius">C</label>
+					<input type="radio" name="celsius" value="F" id="fahrenheit" />
+					<label for="fahrenheit">F</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="body">
+			<div class="body__info">
+
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="footer__item">
+				<span class="footer__title">Ветер</span>
+				<div>
+					<span>5 м/с, западный</span>
+				</div>
+			</div>
+			<div class="footer__item">
+				<span  class="footer__title">Давление</span>
+				<div>
+					<span>752 мм рт. ст.</span>
+				</div>
+			</div>
+			<div class="footer__item">
+				<span class="footer__title">Влажность</span>
+				<div>
+					<span>60%</span>
+				</div>
+			</div>
+			<div class="footer__item">
+				<span class="footer__title">Вероятность дождя</span>
+				<div>
+					<span>10%</span>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
