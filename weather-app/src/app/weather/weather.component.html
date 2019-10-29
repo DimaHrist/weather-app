@@ -29,7 +29,20 @@
 
 		<div class="body">
 			<div class="body__info">
-
+				<div class="body__temp">
+					<div class="body__img" [ngSwitch]="weatherStatus">
+						<ng-template *ngSwitchCase="'mist'"><img src="../../assets/img/cloudy.png"></ng-template>
+						<ng-template *ngSwitchCase="'clouds'"><img src="../../assets/img/cloudy.png"></ng-template>
+						<ng-template *ngSwitchCase="'clear'"><img src="../../assets/img/sunny.svg"></ng-template>
+						<ng-template *ngSwitchCase="'rain'"><img src="../../assets/img/rainy.svg"></ng-template>
+					</div>
+					<div class="body__deg">
+						<span>{{tempC}}°</span>
+					</div>
+				</div>
+				<div class="body__status">
+					<span>{{weatherStatus}}</span>
+				</div>
 			</div>
 		</div>
 
@@ -37,25 +50,25 @@
 			<div class="footer__item">
 				<span class="footer__title">Ветер</span>
 				<div>
-					<span>5 м/с, западный</span>
+					<span>{{windSpeed}} м/с, {{windDirection}}</span>
 				</div>
 			</div>
 			<div class="footer__item">
 				<span  class="footer__title">Давление</span>
 				<div>
-					<span>752 мм рт. ст.</span>
+					<span>{{pressure}} мм рт. ст.</span>
 				</div>
 			</div>
 			<div class="footer__item">
 				<span class="footer__title">Влажность</span>
 				<div>
-					<span>60%</span>
+					<span>{{humidity}}%</span>
 				</div>
 			</div>
 			<div class="footer__item">
 				<span class="footer__title">Вероятность дождя</span>
 				<div>
-					<span>10%</span>
+					<span>{{clouds}}%</span>
 				</div>
 			</div>
 		</div>
