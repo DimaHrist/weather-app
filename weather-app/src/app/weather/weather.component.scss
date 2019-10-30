@@ -69,7 +69,8 @@
 				.city__change, .city__location{
 					height: 100%;
 					display: flex;
-					align-items: center	;
+					align-items: center;
+					cursor: pointer;
 				}
 
 				.city__arrow{
@@ -100,9 +101,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		user-select: none;
 
 		.body__info{
-			width: 35%;
+			width: 30%;
 			height: 45%;
 			display: flex;
 			flex-direction: column;
@@ -141,7 +143,14 @@
     height: 20%;
     display: flex;
     flex-direction: row;
-		justify-content: space-between;
+		user-select: none;
+
+		.footer__column-left, .footer__column-right{
+			display: flex;
+			flex-direction: row;
+			width: 50%;
+			justify-content: space-around;
+		}
 		
 		.footer__title{
 			color: #fff;
@@ -192,4 +201,77 @@ input[type=radio]:checked + label{
   margin: 20px;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.city__inputs{
+	display: flex;
+	flex-direction:row;
+	width: 40%;
+	height: 80%;
+}
+
+.city__input{
+	border-radius: 8px 0 0 8px;
+	width: 80%;
+	height: 80%;
+	font-family: 'ProximaNovaRegular', sans-serif;
+	font-size: 30px;
+	padding: 0px 20px;
+	border: none;
+	outline: none;
+}
+
+.btn{
+	height: 80%;
+	width: 20%;
+	background-color: white !important;
+	border-radius: 0 8px 8px 0;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	font-family: 'ProximaNovaRegular', sans-serif;
+	font-size: 30px;
+	color: #1086ff;
+}
+
+@media screen and (max-width: 900px) {
+	.footer{
+		flex-direction: column !important;
+		align-items: space-around !important;
+		justify-content: space-between !important;
+	}
+
+	.footer__column-left, .footer__column-right {
+		width: 100% !important;
+		align-items: space-around !important;
+		justify-content: space-between !important;
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	.content{
+		justify-content: center !important;
+		width: 85% !important;
+	}
+
+	.body__deg{
+		font-size: 80px !important;
+	}
+
+	.body__img{
+		width: 50px !important;
+	}
+	
+	.city__title{
+		font-size: 30px !important;
+	}
+
+	.body__info{
+		width: 60% !important;
+	}
+
+	.body__status{
+		font-size: 20px !important;
+	}
 }

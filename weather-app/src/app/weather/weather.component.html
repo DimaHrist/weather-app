@@ -2,73 +2,89 @@
 	<div class="content">
 
 		<div class="header">
-			<div class="city">
-				<div class="city__title">
-					<span>Омск</span>
+			<div class="city" *ngIf="!inputEnabled">
+				<div class="city__title" *ngIf="currentCity">
+					<span>{{currentCity}}</span>
 				</div>
 				<div class="city__footer">
-					<div class="city__change">
+					<div class="city__change" (click)="changeCity()">
 						<span>Сменить город</span>
 					</div>
-					<div class="city__location">
+					<div class="city__location" (click)="getCurrentLocation()">
 						<img src="../../assets/img/arrow.svg" class="city__arrow">
 						<span>Мое местоположение</span>
 					</div>
 				</div>
 			</div>
+			<div class="city__inputs"  *ngIf="inputEnabled">
+
+				<input type="text" class="city__input" [formControl]="search">
+				<button class="btn" (click)="submit()">OK</button>
+			</div>
 			<div class="header__radio">
 				<div class="degree">°</div>
 				<div class="radio-group">
-					<input type="radio" name="celsius" value="C" id="celsius" checked="checked" />
+					<input type="radio" name="celsius" value="C" id="celsius" checked="checked" (click)="changeTemp('C')"/>
 					<label for="celsius">C</label>
-					<input type="radio" name="celsius" value="F" id="fahrenheit" />
+					<input type="radio" name="celsius" value="F" id="fahrenheit" (click)="changeTemp('F')"/>
 					<label for="fahrenheit">F</label>
 				</div>
 			</div>
 		</div>
 
 		<div class="body">
-			<div class="body__info">
+			<div *ngIf="weatherStatus" class="body__info">
 				<div class="body__temp">
-					<div class="body__img" [ngSwitch]="weatherStatus">
-						<ng-template *ngSwitchCase="'mist'"><img src="../../assets/img/cloudy.png"></ng-template>
-						<ng-template *ngSwitchCase="'clouds'"><img src="../../assets/img/cloudy.png"></ng-template>
-						<ng-template *ngSwitchCase="'clear'"><img src="../../assets/img/sunny.svg"></ng-template>
-						<ng-template *ngSwitchCase="'rain'"><img src="../../assets/img/rainy.svg"></ng-template>
+					<div  class="body__img" [ngSwitch]="weatherStatus">
+						<ng-template ngSwitchCase="Mist"><img src="../../assets/img/cloudy.png" width="140"></ng-template>
+						<ng-template ngSwitchCase="Clouds"><img src="../../assets/img/cloudy.png" width="140"></ng-template>
+						<ng-template ngSwitchCase="Clear"><img src="../../assets/img/sunny.svg" width="140"></ng-template>
+						<ng-template ngSwitchCase="Rain"><img src="../../assets/img/rainy.svg" width="140"></ng-template>
+						<ng-template ngSwitchCase="Snow"><img src="../../assets/img/snowy.png" width="140"></ng-template>
 					</div>
 					<div class="body__deg">
-						<span>{{tempC}}°</span>
+						<span>{{temp}}°</span>
 					</div>
 				</div>
 				<div class="body__status">
-					<span>{{weatherStatus}}</span>
+					<div  class="body__img" [ngSwitch]="weatherStatus">
+						<ng-template ngSwitchCase="Mist"><span>Туман</span></ng-template>
+						<ng-template ngSwitchCase="Clouds">Облачно</ng-template>
+						<ng-template ngSwitchCase="Clear">Преимущественно солнечно</ng-template>
+						<ng-template ngSwitchCase="Rain">Дождь</ng-template>
+						<ng-template ngSwitchCase="Snow">Снег</ng-template>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="footer">
-			<div class="footer__item">
-				<span class="footer__title">Ветер</span>
-				<div>
-					<span>{{windSpeed}} м/с, {{windDirection}}</span>
+			<div class="footer__column-left">
+				<div class="footer__item">
+					<span class="footer__title">Ветер</span>
+					<div>
+						<span>{{windSpeed}} м/с{{windDirection}}</span>
+					</div>
+				</div>
+				<div class="footer__item">
+					<span  class="footer__title">Давление</span>
+					<div>
+						<span>{{pressure}} мм рт. ст.</span>
+					</div>
 				</div>
 			</div>
-			<div class="footer__item">
-				<span  class="footer__title">Давление</span>
-				<div>
-					<span>{{pressure}} мм рт. ст.</span>
+			<div class="footer__column-right">
+				<div class="footer__item">
+					<span class="footer__title">Влажность</span>
+					<div>
+						<span>{{humidity}}%</span>
+					</div>
 				</div>
-			</div>
-			<div class="footer__item">
-				<span class="footer__title">Влажность</span>
-				<div>
-					<span>{{humidity}}%</span>
-				</div>
-			</div>
-			<div class="footer__item">
-				<span class="footer__title">Вероятность дождя</span>
-				<div>
-					<span>{{clouds}}%</span>
+				<div class="footer__item">
+					<span class="footer__title">Вероятность дождя</span>
+					<div>
+						<span>{{clouds}}%</span>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -19,4 +19,11 @@ export class WeatherService {
       );
   }
 
+  getCityByLocation(lat, lng): Observable<any> {
+    return this
+      .http
+      .get(
+        `http://api.openweathermap.org/data/2.5/weather/?${this.key}&lat=${lat}&lon=${lng}`
+      );
+  }
 }
